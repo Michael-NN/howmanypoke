@@ -6,33 +6,65 @@
 	<body>
 		<h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
 		<input id="inputBox" onkeydown="addToList(event)" autocomplete="off">
+		<span id="addMsg">Nice one!</span>
+		<span id="repMsg">Already got that one</span>
+		<span id="badMsg">Sorry, not a Pokemon!</span>
 		<div id="namedDiv"></div>
 	</body>
 	<script>
 		const enterCode = 13;
 		let inputBox = document.getElementById("inputBox");
 		let namedDiv = document.getElementById("namedDiv");
+		let addMsg = document.getElementById("addMsg");
+		let repMsg = document.getElementById("repMsg");
+		let badMsg = document.getElementById("badMsg");
 		
 		let namedList = [];
+		
+		clearMessage();
 		
 		function addToList(event) {
 			if (event.keyCode === enterCode) {
 				let entry = inputBox.value.charAt(0).toUpperCase() + inputBox.value.toLowerCase().slice(1);
 				if (pokeDex.includes(entry)) {
 					if (!namedList.includes(entry)) {
-						//add poke
+						addMessage();
 						namedList.push(entry);
 						inputBox.value = '';
 						namedDiv.innerHTML = namedList;
 					} else {
-						//already named poke
+						repMessage();
 						inputBox.value = '';
 					}
 				} else {
-					//not a poke
+					badMessage();
 					inputBox.value = '';
 				}
 			}
+		}
+		
+		function addMessage() {
+			addMsg.style.display = "inline";
+			repMsg.style.display = "none";
+			badMsg.style.display = "none";
+		}
+		
+		function repMessage() {
+			addMsg.style.display = "none";
+			repMsg.style.display = "inline";
+			badMsg.style.display = "none";
+		}
+
+		function badMessage() {
+			addMsg.style.display = "none";
+			repMsg.style.display = "none";
+			badMsg.style.display = "inline";
+		}
+
+		function clearMessage() {
+			addMsg.style.display = "none";
+			repMsg.style.display = "none";
+			badMsg.style.display = "none";
 		}
 		
 		const pokeDex = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise'];
