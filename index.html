@@ -5,39 +5,22 @@
 	</head>
 	<body>
 		<h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
-		<input id="inputBox">
+		<input id="inputBox" onkeydown="addToList(event)">
 		<div id="namedDiv"></div>
 	</body>
 	<script>
+		const enterCode = 13;
 		let inputBox = document.getElementById("inputBox");
 		let namedDiv = document.getElementById("namedDiv");
 		
 		let namedList = [];
 		
-		inputBox.addEventListener("keydown", addToList);
-		function addToList() {
-			console.log('function start');
-			console.log(inputBox.value);
-			console.log(namedList);
-			console.log(namedDiv.innerHTML);
-			
-			namedList.push(inputBox.value);			
-			console.log('pushed to list');
-			console.log(inputBox.value);
-			console.log(namedList);
-			console.log(namedDiv.innerHTML);
-			
-			inputBox.value = '';			
-			console.log('cleared input');
-			console.log(inputBox.value);
-			console.log(namedList);
-			console.log(namedDiv.innerHTML);
-			
-			namedDiv.innerHTML = namedList;			
-			console.log('reassigned innerHTML');
-			console.log(inputBox.value);
-			console.log(namedList);
-			console.log(namedDiv.innerHTML);
+		function addToList(event) {
+			if (event.keyCode === enterCode) {
+				namedList.push(inputBox.value);			
+				inputBox.value = '';			
+				namedDiv.innerHTML = namedList;			
+			}
 		}
 	</script>
 </html>
