@@ -1,6 +1,10 @@
 <html>
 	<head>
 		<style>
+			#namedDiv {
+				display: flex;
+				flex-flow: column wrap;
+			}
 		</style>
 	</head>
 	<body>
@@ -97,7 +101,7 @@
 						addMessage();
 						namedList.push(entry);
 						inputBox.value = '';
-						namedDiv.innerHTML = namedList;
+						namedDiv.innerHTML += ("<div>" + entry + "</div>");
 					} else {
 						repMessage();
 						inputBox.value = '';
