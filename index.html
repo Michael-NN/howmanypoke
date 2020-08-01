@@ -8,6 +8,8 @@
 		
 		<button id="startButton" label="start" onclick="startGame()">Start</button>
 		
+		<div id="timer"></div>
+		
 		<input id="inputBox" onkeydown="addToList(event)" autocomplete="off">
 		
 		<span id="addMsg">Nice one!</span>
@@ -19,6 +21,7 @@
 	<script>
 		const enterCode = 13;
 		let startButton = document.getElementById("startButton");
+		let timer = document.getElementById("timer");
 		let inputBox = document.getElementById("inputBox");
 		let namedDiv = document.getElementById("namedDiv");
 		let addMsg = document.getElementById("addMsg");
@@ -37,7 +40,32 @@
 		
 		function startGame() {
 			startButton.style.display = "none"
+			startTimer();
 			inputBox.style.display = "inline"
+		}
+		
+		function startTimer() {
+			timer.innerHTML = "005:00";
+			incrementTimer();
+		}
+		
+		function incrementTimer () {
+			let presentTime = timer.innerHTML;
+			let timeArray = presentTime.split(/[:]+/);
+			let m = timeArray[0];
+			let s = checkSecond((timeArray[1] - 1));
+			if (s == 59) {
+				m = m-1;
+			}
+			//if(m<0){alert('timer completed')}
+			timer.innerHTML = m + ":" + s;
+			setTimeout(incrementTimer, 1000);			
+		}
+		
+		function checkSecond(sec) {
+			if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+			if (sec < 0) {sec = "59"};
+			return sec;
 		}
 		
 		function addToList(event) {
