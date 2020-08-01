@@ -17,10 +17,24 @@
 		
 		function addToList(event) {
 			if (event.keyCode === enterCode) {
-				namedList.push(inputBox.value);			
-				inputBox.value = '';			
-				namedDiv.innerHTML = namedList;			
+				let entry = inputBox.value.charAt(0).toUpperCase() + inputBox.value.toLowerCase().slice(1);
+				if (pokeDex.includes(entry)) {
+					if (!namedList.includes(entry)) {
+						//add poke
+						namedList.push(entry);
+						inputBox.value = '';
+						namedDiv.innerHTML = namedList;
+					} else {
+						//already named poke
+						inputBox.value = '';
+					}
+				} else {
+					//not a poke
+					inputBox.value = '';
+				}
 			}
 		}
+		
+		const pokeDex = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise'];
 	</script>
 </html>
