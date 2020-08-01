@@ -61,6 +61,7 @@
 		}
 		
 		function endGame() {
+			inputBox.style.display = "none"
 			result.innerHTML = "Time's Up!  You listed " + namedList.length + " Pokemon!";
 			clearMessage();
 			restartButton.style.display = "inline";
