@@ -5,30 +5,35 @@
 	</head>
 	<body>
 		<h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
+		<p>When you click 'Start' a 5-minute timer will begin.  Type as many Pokemon names into the box as you can, pressing enter after each one, before time runs out</p>
 		
 		<button id="startButton" label="start" onclick="startGame()">Start</button>
-		<button id="restartButton" label="restart" onclick="setUp()">Reset</button>
 		
 		<div id="timer"></div>
 		
 		<input id="inputBox" onkeydown="addToList(event)" autocomplete="off">
 		
+		<div id="result"></div>
+		
 		<span id="addMsg">Nice one!</span>
 		<span id="repMsg">Already got that one</span>
 		<span id="badMsg">Sorry, not a Pokemon!</span>
+		
+		<button id="restartButton" label="restart" onclick="setUp()">Reset</button>
 		
 		<div id="namedDiv"></div>
 	</body>
 	<script>
 		const enterCode = 13;
 		let startButton = document.getElementById("startButton");
-		let restartButton = document.getElementById("restartButton");
 		let timer = document.getElementById("timer");
 		let inputBox = document.getElementById("inputBox");
-		let namedDiv = document.getElementById("namedDiv");
+		let result = document.getElementById("result");
 		let addMsg = document.getElementById("addMsg");
 		let repMsg = document.getElementById("repMsg");
 		let badMsg = document.getElementById("badMsg");
+		let restartButton = document.getElementById("restartButton");
+		let namedDiv = document.getElementById("namedDiv");
 		
 		let namedList = [];
 		
@@ -36,10 +41,13 @@
 		
 		function setUp() {
 			startButton.style.display = "inline";
-			restartButton.style.display = "none";
 			timer.innerHTML = "";
 			inputBox.style.display = "none";
+			result.innerHTML = "";
 			clearMessage();
+			restartButton.style.display = "none";
+			namedList = [];
+			namedDiv.innerHTML = "";
 		}
 		
 		function startGame() {
@@ -49,8 +57,9 @@
 		}
 		
 		function endGame() {
-			restartButton.style.display = "inline";
+			result.innerHTML = "Time's Up!  You listed " + namedList.length + " Pokemon!";
 			clearMessage();
+			restartButton.style.display = "inline";
 		}
 		
 		function startTimer() {
