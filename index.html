@@ -4,7 +4,7 @@
 			* {
 				font-family: Verdana;
 				text-align: center;
-				margin: 10px;
+				margin: 30px;
 			}
 			
 			button {
@@ -19,33 +19,46 @@
 			#timer {
 				font-size: 35px;
 			}
+            
+            #controlsDiv {
+            	height: 30%
+            }
 			
 			#namedDiv {
-				height: 75%;
+				height: 70%;
 				display: flex;
 				flex-flow: column wrap;
 				align-items: flex-start;
 				align-content: flex-start;
+                border: solid blue;
+                border-radius: 10px;
+                overflow: auto;
 			}
+            
+            #namedDiv > div {
+            	margin: 10px;
+            }
 		</style>
 	</head>
 	<body>
-		<h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
-		<p>When you click 'Start' a 5-minute timer will begin.  Type as many Pokemon names into the box as you can, pressing enter after each one, before time runs out</p>
-		
-		<button id="startButton" label="start" onclick="startGame()">Start</button>
-		
-		<div id="timer"></div>
-		
-		<input id="inputBox" onkeydown="addToList(event)" autocomplete="off">
-		
-		<div id="result"></div>
-		
-		<span id="addMsg">Nice one!</span>
-		<span id="repMsg">Already got that one</span>
-		<span id="badMsg">Sorry, not a Pokemon!</span>
-		
-		<button id="restartButton" label="restart" onclick="setUp()">Reset</button>
+	    <div id="controlsDiv">
+          <h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
+          <p>When you click 'Start' a 5-minute timer will begin.  Type as many Pokemon names into the box as you can, pressing enter after each one, before time runs out</p>
+
+          <button id="startButton" label="start" onclick="startGame()">Start</button>
+
+          <div id="timer"></div>
+
+          <input id="inputBox" onkeydown="addToList(event)" autocomplete="off">
+
+          <div id="result"></div>
+
+          <span id="addMsg">Nice one!</span>
+          <span id="repMsg">Already got that one</span>
+          <span id="badMsg">Sorry, not a Pokemon!</span>
+
+          <button id="restartButton" label="restart" onclick="setUp()">Reset</button>
+        </div>
 		
 		<div id="namedDiv"></div>
 	</body>
