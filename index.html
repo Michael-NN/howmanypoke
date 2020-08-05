@@ -4,7 +4,7 @@
 			* {
 				font-family: Verdana;
 				text-align: center;
-				margin: 30px;
+				margin: 15px;
 			}
 			
 			button {
@@ -15,7 +15,15 @@
 				border-radius: 5px;
 				padding: 20px 40px;
 			}
+            
+            input {
+            	margin: 0px;
+            }
 			
+            span {
+            	margin: 0px;
+            }
+            
 			#timer {
 				font-size: 35px;
 			}
@@ -54,8 +62,8 @@
           <div id="result"></div>
 
           <span id="addMsg">Nice one!</span>
-          <span id="repMsg">Already got that one</span>
-          <span id="badMsg">Sorry, not a Pokemon!</span>
+          <span id="repMsg">Already named that Pokemon!</span>
+          <span id="badMsg">Sorry, that's not a Pokemon!</span>
 
           <button id="restartButton" label="restart" onclick="setUp()">Reset</button>
         </div>
