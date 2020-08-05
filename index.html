@@ -30,6 +30,7 @@
             
             #controlsDiv {
             	height: 30%
+                margin: 0px;
             }
 			
 			#namedDiv {
@@ -38,20 +39,21 @@
 				flex-flow: column wrap;
 				align-items: flex-start;
 				align-content: flex-start;
+                margin: 0px 15px;
                 border: solid blue;
                 border-radius: 10px;
                 overflow: auto;
 			}
             
             #namedDiv > div {
-            	margin: 10px;
+            	margin: 10px 20px;
             }
 		</style>
 	</head>
 	<body>
 	    <div id="controlsDiv">
           <h1>How Many Pokemon Can You Name in 5 Minutes?</h1>
-          <p>When you click 'Start' a 5-minute timer will begin.  Type as many Pokemon names into the box as you can, pressing enter after each one, before time runs out</p>
+          <p>Click 'Start' to being a 5-minute timer.  Type as many Pokemon names into the box as you can, pressing enter after each one, before time runs out.</p>
 
           <button id="startButton" label="start" onclick="startGame()">Start</button>
 
@@ -101,6 +103,7 @@
 			startButton.style.display = "none"
 			startTimer();
 			inputBox.style.display = "inline"
+            inputBox.focus();
 		}
 		
 		function endGame() {
